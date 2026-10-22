@@ -29,6 +29,7 @@ public class Main extends JFrame {
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
+
             JPanel panel = new JPanel() {
 
                 @Override
