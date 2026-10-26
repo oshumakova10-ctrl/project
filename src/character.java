@@ -11,12 +11,12 @@ import javax.swing.*;
 public class character {
     public BufferedImage image;
 
-    character ()
-    {
+    character() {
         try {
-            image=ImageIO.read(new File("src/img/mouse.png"));
+            image = ImageIO.read(new File("src/img/mouse.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
+}
