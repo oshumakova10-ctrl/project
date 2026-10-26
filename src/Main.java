@@ -7,27 +7,25 @@ import java.io.IOException;
 
 public class Main extends JFrame {
 
-    private BufferedImage back;
+    //    private BufferedImage back;
     private BufferedImage mouse;
-    private BufferedImage arrow_left;
-    private BufferedImage arrow_right;
-    private BufferedImage arrow_up;
+//    private BufferedImage arrow_left;
+//    private BufferedImage arrow_right;
+//    private BufferedImage arrow_up;
 
     public Main() {
         try {
 
 
-            mouse = ImageIO.read(new File("H:/Проект 2026/картинки/mouse.png"));
-//            arrow_left = ImageIO.read(new File("H:/Проект 2026/картинки/стрелка вверх.png"));
-//            arrow_right = ImageIO.read(new File("H:/Проект 2026/картинки/стрелка вверх.png"));
-//            arrow_up = ImageIO.read(new File("H:/Проект 2026/картинки/стрелка вверх.png"));
-//// arrow_left = ImageIO.read(new File("C:/Users/User/OneDrive/Desktop/проект 2026/стрелка влево.png"));
+            mouse = ImageIO.read(new File("src/img/mouse.png"));
+//            arrow_left = ImageIO.read(new File("C:/Users/User/OneDrive/Desktop/проект 2026/стрелка влево.png"));
+//            arrow_right = ImageIO.read(new File("C:/Users/User/OneDrive/Desktop/проект 2026/стрелка вправо.png"));
+//            arrow_up = ImageIO.read(new File("C:/Users/User/OneDrive/Desktop/проект 2026/стрелка вверх.png"));
+// arrow_left = ImageIO.read(new File("C:/Users/User/OneDrive/Desktop/проект 2026/стрелка влево.png"));
 //            back = ImageIO.read(new File("H:/Проект 2026/картинки/фон начало.JPG"));
 
-            setSize(800, 600);
-            setVisible(true);
+            setSize(1024, 718);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
 
             JPanel panel = new JPanel() {
@@ -36,13 +34,12 @@ public class Main extends JFrame {
                 protected void paintComponent(Graphics g) {
                     super.paintComponent(g);
 
-                    g.drawImage(mouse, 0, 0, null);
+//                    g.drawImage(back, 0, 0, null);
 //
-//                    g.drawImage(mouse, 0, 0, null);
+                    g.drawImage(mouse, 0, 0, null);
 //                    g.drawImage(arrow_left, 1000, 0, null);
 //                    g.drawImage(arrow_right, 1000, 300, null);
 //                    g.drawImage(arrow_up, 0, 0, null);
-//                    g.drawImage(back, 0, 0, null);
                 }
 
             };
@@ -59,4 +56,3 @@ public class Main extends JFrame {
         new Main();
     }
 }
-

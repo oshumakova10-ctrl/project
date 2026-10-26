@@ -12,7 +12,7 @@ public class menu extends JFrame {
     MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (e.getPoint().x >350&& e.getPoint().x <450 && e.getPoint().y >300 && e.getPoint().y >400) {
+            if (e.getPoint().x >460&& e.getPoint().x <660 && e.getPoint().y >260 && e.getPoint().y >560) {
                 new Main();
                 System.out.println("start");
             }
@@ -40,12 +40,14 @@ public class menu extends JFrame {
     menu ()
     {
         try {
-            fon = ImageIO.read(new File("H:/Проект 2026/картинки/фон начало.JPG"));
-            but_start = ImageIO.read(new File("H:/Проект 2026/картинки/стрелка вверх.png"));
-            but_about = ImageIO.read(new File("H:/Проект 2026/картинки/стрелка вправо.png"));
-            but_back = ImageIO.read(new File("H:/Проект 2026/картинки/стрелка влево.png"));
-        } catch (Exception e) {      }
-        setSize(800, 600);
+            fon = ImageIO.read(new File("src/img/фон начало.JPG"));
+            but_start = ImageIO.read(new File("src/img/стрелка вверх.png"));
+            but_about = ImageIO.read(new File("src/img/стрелка вправо.png"));
+            but_back = ImageIO.read(new File("src/img/стрелка влево.png"));
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+        setSize(1024, 718);
         setVisible(true);
         addMouseListener(ml);
 
@@ -55,9 +57,9 @@ public class menu extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
         g.drawImage(fon, 0, 0, this);
-        g.drawImage(but_start, 300, 400, this);
-        g.drawImage(but_about, 400, 400, this);
-        g.drawImage(but_back, 500, 400, this);
+        g.drawImage(but_start, 460, 260, this);
+        g.drawImage(but_about, 160, 600, this);
+        g.drawImage(but_back, 660, 600, this);
 
 
     }
