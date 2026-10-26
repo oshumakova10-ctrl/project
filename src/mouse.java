@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -45,6 +47,15 @@ public class mouse extends JFrame {
         @Override
         public void keyReleased(KeyEvent e) {
 
+        }
+    };
+
+    ActionListener al = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (int i=0; i<sour.size();i++ )
+                sour.get(i).move();
+            repaint();
         }
     };
 
