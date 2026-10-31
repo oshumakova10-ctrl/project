@@ -41,9 +41,9 @@ public class menu extends JFrame {
     {
         try {
             fon = ImageIO.read(new File("src/img/фон начало.JPG"));
-            but_start = ImageIO.read(new File("src/img/стрелка вверх.png"));
-            but_about = ImageIO.read(new File("src/img/стрелка вправо.png"));
-            but_back = ImageIO.read(new File("src/img/стрелка влево.png"));
+            but_start = ImageIO.read(new File("src/img/start.png"));
+            but_about = ImageIO.read(new File("src/img/starti.png"));
+            but_back = ImageIO.read(new File("src/img/exit.png"));
         } catch (Exception e){
             throw new RuntimeException(e);
         }
@@ -57,9 +57,9 @@ public class menu extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
         g.drawImage(fon, 0, 0, this);
-        g.drawImage(but_start, 460, 260, this);
-        g.drawImage(but_about, 160, 600, this);
-        g.drawImage(but_back, 660, 600, this);
+        g.drawImage(but_start, 360, 160, this);
+        g.drawImage(but_about, 0, 0, this);
+        g.drawImage(but_back, 160, 250, this);
 
 
     }

@@ -72,11 +72,11 @@ public class mouse extends JFrame {
         setSize(1024, 718);
         setVisible(true);
         addKeyListener(kl);
-        for (int i=0; i<5; i++) {
-            sour.add(new source());
-        }
-        ////books
-        time.start();
+//        for (int i=0; i<5; i++) {
+//            sour.add(new source());
+//        }
+//        ////books
+//        time.start();
     }
 
     public void paint(Graphics g) {
