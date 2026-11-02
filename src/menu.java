@@ -12,11 +12,15 @@ public class menu extends JFrame {
     MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (e.getPoint().x >460&& e.getPoint().x <660 && e.getPoint().y >260 && e.getPoint().y >560) {
-                new Main();
+            int a=e.getX();
+            int b=e.getY();
+            System.out.println(a + " " + b);
+//            if (e.getPoint().x >363 && e.getPoint().x <603 && e.getPoint().y >257 && e.getPoint().y >495) {
+            if (a >363 && a <603 && b >257 && b <495) {
+                new Main();//364 612 247 503
                 System.out.println("start");
             }
-            if (e.getPoint().x >500 && e.getPoint().x <600 && e.getPoint().y >300 && e.getPoint().y >400) {
+            if (a >29 && a <310 && b >505 && b <694) {
                 System.exit(0);
                 System.out.println("exit");
             }
@@ -40,10 +44,10 @@ public class menu extends JFrame {
     menu ()
     {
         try {
-            fon = ImageIO.read(new File("src/img/фон начало.JPG"));
-            but_start = ImageIO.read(new File("src/img/start.png"));
-            but_about = ImageIO.read(new File("src/img/starti.png"));
-            but_back = ImageIO.read(new File("src/img/exit.png"));
+            fon = ImageIO.read(new File("src/img/start_fon.png"));
+            but_start = ImageIO.read(new File("src/img/startii.png"));
+//            but_about = ImageIO.read(new File("src/img/starti.png"));
+            but_back = ImageIO.read(new File("src/img/exitii.png"));
         } catch (Exception e){
             throw new RuntimeException(e);
         }
@@ -57,9 +61,10 @@ public class menu extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
         g.drawImage(fon, 0, 0, this);
-        g.drawImage(but_start, 360, 160, this);
-        g.drawImage(but_about, 0, 0, this);
-        g.drawImage(but_back, 160, 250, this);
+        g.drawImage(but_start, 0, 0, this);//364 247
+//        g.drawImage(but_about, 0, 0, this);
+//        g.drawImage(but_back, 150, 625, this);
+        g.drawImage(but_back, 0, 0, this);
 
 
     }
