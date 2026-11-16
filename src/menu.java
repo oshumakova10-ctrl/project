@@ -17,8 +17,10 @@ public class menu extends JFrame {
             System.out.println(a + " " + b);
 //            if (e.getPoint().x >363 && e.getPoint().x <603 && e.getPoint().y >257 && e.getPoint().y >495) {
             if (a >363 && a <603 && b >257 && b <495) {
-                new Main();//364 612 247 503
                 System.out.println("start");
+                new mouse();
+//                new Main();//364 612 247 503
+
             }
             if (a >29 && a <310 && b >505 && b <694) {
                 System.exit(0);
