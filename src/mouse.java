@@ -13,13 +13,29 @@ public class mouse extends JFrame {
     public int x = 35;
     public int y = 277;
     public boolean up = false;
+    /// books
+    public int bookX = 360;
+    public int bookY = 317;
 
     //bad
     // СОБИРАЕМЫЕ ЛИСТЫ
 
     public ArrayList<source> sour= new ArrayList<source>();
+    /// ///////////оределяем положение мыши относительно книги
+    public boolean overBookX() { //над книгой
+        return x+pers.getWidth() > bookX && x < bookX + book.getWidth();
+    }
+
+    public int ground () {
+        if (overBookX() && y+pers.getHeight() == bookY)//на поверхности
+        {
+            return bookY - pers.getHeight();
+        }
+        return 277;
+    }
 
 
+/// ////////////нажатия
     public KeyListener kl = new KeyListener() {
         @Override
         public void keyTyped(KeyEvent e) {
@@ -50,41 +66,12 @@ public class mouse extends JFrame {
 
 
 
-                if (!time.isRunning() && y == 277) {
+                if (!time.isRunning() && y == ground()) {
                     up=true;
                     time.start();
                     repaint();
                 }
 
-
-
-///наработки по норм прыжку
-//                double y = 0;             // h
-//                double vY = 0;     // y up
-//                double g = -9.8;    // g
-//                double jumpForce = 15.0;  //
-//                boolean Gr = true;  //земля
-//                public void jump() {
-//                    if (Gr) {
-//                        vY = jumpForce;
-//                        Gr = false;
-//                    }
-//                }
-/// время по кадрам
-//                public void update(double dT) {
-//                    if (Gr) {
-//                        vY += g * dT;
-//                        y += vY * dT;
-//
-//                        // Проверка (y = 0)
-//                        if (y <= 0) {
-//                            y = 0;
-//                            vY = 0;
-//                            Gr = true;
-//                        }
-//                    }
-//                }
-//
             }
 
 
@@ -95,24 +82,37 @@ public class mouse extends JFrame {
 
         }
     };
-
+    /// //////////прыжки
     ActionListener al = new ActionListener() {
         @Override
         //сама рисовалка прыжочки
         public void actionPerformed(ActionEvent e) {
+            int gr = ground();
             if (up) {
-                if (y > 177) {
+                if (y > 127) { //самая верхняя точка 177
                     y -= 5;
                 } else up = false;
             }
             else {
-                if (y < 277) {
+                if (y < gr) {
                     y += 5;
-                } else {
-                    time.stop();
-
+                    if (y > gr) y = gr;
+                    time.stop();//fall on floor
                 }
+
+
             }
+            boolean inbookX = x+pers.getWidth()>bookX && x<bookX+book.getWidth();
+            boolean inbookY = y+pers.getWidth()>bookY && y<bookY+book.getHeight();
+            if (inbookX && inbookY) {
+                /// ////////////
+            /// /////////////
+            ///  ////////
+            /// ///
+            ///  ////////
+
+            }
+
 
             for (int i=0; i<sour.size(); i++)
                 sour.get(i).move();
@@ -150,7 +150,7 @@ public class mouse extends JFrame {
 //        public void mouseExited(MouseEvent e) {     }
 //
 //    };
-    /// /
+    /// //////////////программа
     mouse() {
 
         try {
@@ -176,7 +176,8 @@ public class mouse extends JFrame {
 //                g.drawImage(but_start, 460, 260, this);
         g.drawImage(pers, x, 667, this);
         g.drawImage(pers, x, y, this); //y=277
-        g.drawImage(book, 360, y, this);
+
+        g.drawImage(book, bookX, bookY, this); ///277
 
 //                g.drawImage(but_back, 660, 600, this);
         for (int i=0; i<sour.size(); i++) {
