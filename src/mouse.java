@@ -15,19 +15,21 @@ public class mouse extends JFrame {
     public boolean up = false;
     /// books
     public int bookX = 360;
-    public int bookY = 317;
-
+    public int bookY;// = 247 + pers.getHeight(); //317
+    public int floor = 277;
+    //низ мыши до таймера
     //bad
     // СОБИРАЕМЫЕ ЛИСТЫ
 
     public ArrayList<source> sour= new ArrayList<source>();
     /// ///////////оределяем положение мыши относительно книги
-    public boolean overBookX() { //над книгой
-        return x+pers.getWidth() > bookX && x < bookX + book.getWidth();
+    public boolean overBookX() {
+        int center = x + pers.getWidth()/2;//над книгой
+        return center > bookX && center < bookX + book.getWidth();
     }
 
     public int ground () {
-        if (overBookX() && y+pers.getHeight() == bookY)//на поверхности
+        if (overBookX())//на поверхности
         {
             return bookY - pers.getHeight();
         }
@@ -47,18 +49,22 @@ public class mouse extends JFrame {
             System.out.println(x);
 
             if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                x+=5;
+                if (x>1547) x=1547;
                 if (x==1547) {
                     System.out.println("WALL");
 
                 }
-                else {
-                    //x++;
-                    x+=5;
-                    repaint();
-                }
+
+                repaint();
             }
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                 //x--;
+                if (x<0) x=1547;
+                if (x==1547) {
+                    System.out.println("WALL");
+
+                }
                 x-=5;
                 repaint();
             }
@@ -66,7 +72,7 @@ public class mouse extends JFrame {
 
 
 
-                if (!time.isRunning() && y == ground()) {
+                if (y == ground()) {
                     up=true;
                     time.start();
                     repaint();
@@ -97,19 +103,20 @@ public class mouse extends JFrame {
                 if (y < gr) {
                     y += 5;
                     if (y > gr) y = gr;
-                    time.stop();//fall on floor
+                    //fall on floor
                 }
-
-
+            }
+            if (!up && overBookX() && y+pers.getHeight()>=bookY) {
+                y=bookY - pers.getHeight();
             }
             boolean inbookX = x+pers.getWidth()>bookX && x<bookX+book.getWidth();
-            boolean inbookY = y+pers.getWidth()>bookY && y<bookY+book.getHeight();
-            if (inbookX && inbookY) {
-                /// ////////////
-            /// /////////////
-            ///  ////////
-            /// ///
-            ///  ////////
+            boolean inbookY = y+pers.getHeight()>bookY && y<bookY+book.getHeight();
+            if (inbookX && inbookY && y==floor && !up) {
+                if (x+pers.getWidth()/2 >= bookX + book.getWidth()/2) {
+                x=bookX+book.getWidth();
+                } else {
+                    x = bookX - pers.getWidth();      // упёрлась слева
+                }
 
             }
 
@@ -124,7 +131,7 @@ public class mouse extends JFrame {
 
         }
     };
-    Timer time = new Timer(20, al);
+    Timer time = new Timer(10, al);
     //зачем-то таймер с которым разберемся потом
 
     //сама игра
@@ -160,6 +167,8 @@ public class mouse extends JFrame {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        bookY = 137 + pers.getHeight(); //117
         setSize(1795, 896);
         setVisible(true);
         addKeyListener(kl);
@@ -167,14 +176,14 @@ public class mouse extends JFrame {
 //            sour.add(new source());
 //        }
 //        ////books
-//        time.start();
+        time.start();
     }
 
     public void paint(Graphics g) {
         super.paint(g);
         g.drawImage(back, 0, 0, this);
 //                g.drawImage(but_start, 460, 260, this);
-        g.drawImage(pers, x, 667, this);
+//        g.drawImage(pers, x, 667, this);
         g.drawImage(pers, x, y, this); //y=277
 
         g.drawImage(book, bookX, bookY, this); ///277
