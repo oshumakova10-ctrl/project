@@ -75,3 +75,35 @@
 //
 //
 //}
+
+//                double y = 0;             // h
+//                double vY = 0;     // y up
+//                double g = -9.8;    // g
+//                double jumpForce = 15.0;  //
+//                boolean isGrounded = true;
+//                public void jump() {
+//                    if (isGrounded) {
+//                        veY = jumpForce;
+//                        isGrounded = false;
+//                    }
+//                }
+//
+//// Вызывается в каждом кадре (deltaTime — время с прошлого кадра)
+//                public void update(double deltaTime) {
+//                    if (!isGrounded) {
+//                        vY += g * deltaTime;
+//                        y += vY * deltaTime;
+//
+//                        // Проверка приземления на уровень земли (y = 0)
+//                        if (y <= 0) {
+//                            y = 0;
+//                            vY = 0;
+//                            isGrounded = true;
+//                        }
+//                    }
+//                }
+//                if (sour.size()>0)
+//                {
+//                    sour.remove(new Random().nextInt(sour.size()));
+//                    repaint();
+//                                    }
