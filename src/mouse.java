@@ -16,7 +16,7 @@ public class mouse extends JFrame {
     /// books
     public int bookX = 360;
     public int bookY;// = 247 + pers.getHeight(); //317
-    public int floor = 277;
+    public int floor = 277; //277
     //низ мыши до таймера
     //bad
     // СОБИРАЕМЫЕ ЛИСТЫ
@@ -33,7 +33,7 @@ public class mouse extends JFrame {
         {
             return bookY - pers.getHeight();
         }
-        return 277;
+        return 297; //277
     }
 
 
@@ -60,8 +60,8 @@ public class mouse extends JFrame {
             }
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                 //x--;
-                if (x<0) x=1547;
-                if (x==1547) {
+                if (x<0) x=0;
+                if (x==0) {
                     System.out.println("WALL");
 
                 }
@@ -110,7 +110,7 @@ public class mouse extends JFrame {
                 y=bookY - pers.getHeight();
             }
             boolean inbookX = x+pers.getWidth()>bookX && x<bookX+book.getWidth();
-            boolean inbookY = y+pers.getHeight()>bookY && y<bookY+book.getHeight();
+            boolean inbookY = y+pers.getHeight()>bookY && y<bookY+book.getHeight(); ///y+pers.getHeight()>bookY && y<bookY+book.getHeight();
             if (inbookX && inbookY && y==floor && !up) {
                 if (x+pers.getWidth()/2 >= bookX + book.getWidth()/2) {
                 x=bookX+book.getWidth();
@@ -162,13 +162,13 @@ public class mouse extends JFrame {
 
         try {
             back = ImageIO.read(new File("src/img/fon_wood1.png"));
-            pers = ImageIO.read(new File("src/img/mouse_mini.png"));
+            pers = ImageIO.read(new File("src/img/mouse_mini1.png"));
             book = ImageIO.read(new File("src/img/book6at2.png"));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-        bookY = 137 + pers.getHeight(); //117
+        bookY = 147 + pers.getHeight(); //137
         setSize(1795, 896);
         setVisible(true);
         addKeyListener(kl);
