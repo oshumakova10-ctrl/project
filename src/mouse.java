@@ -58,6 +58,7 @@ public class mouse extends JFrame {
 
                 repaint();
             }
+            ///
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                 //x--;
                 if (x<0) x=0;
